@@ -1,17 +1,10 @@
-% attention cette fonction est tres bancale et calibrée notamment pour
-% lenna ...
-
-function noisedImg = noiseGenerator(img, noiseSize)
+% quick and dirty ... pas fou et pas tjs 1000% fonctionnel
+function noisedImg = noiseGenerator(img)
     noisedImg = img;
-    nSize = noiseSize;
-    [ligne colonnes] = size(img)
+    [ligne colonnes] = size(img);
     for i=1:100
-        x = randNumByte();
-        y = randNumByte();
-        if x+nSize > colonnes -5 || y+nSize > ligne -5
-            return
-        else
-            noisedImg(x : x + nSize, y : y + nSize) = 0;
-        end
+        x = ceil(rand*ligne);
+        y = ceil(rand*colonnes);
+        noisedImg(x,y) = 0;
     end
 end
